@@ -14,6 +14,6 @@ class Player
   private
 
   def damage
-    rand(1..5)
+    Kernel.rand(1..5)
   end
 end
