@@ -1,7 +1,7 @@
 require_relative 'player'
-class Game
 
+class Game
   def attack(player)
-      player.lose_hp
+    player.lose_hp
   end
 end
