@@ -1,5 +1,5 @@
 class Player
-  MAX_HP = 10
+  MAX_HP = 20
   attr_reader :name, :hp
 
   def initialize(name)
@@ -8,6 +8,12 @@ class Player
   end
 
   def receive_attack
-    @hp -= 2
+    @hp -= damage
+  end
+
+  private
+
+  def damage
+    Kernel.rand(1..5)
   end
 end

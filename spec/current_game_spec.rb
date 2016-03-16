@@ -1,7 +1,6 @@
 require_relative '../app.rb'
 
 describe Battle do
-
   let(:game) { double :game }
 
   it 'should store and display the current game' do
