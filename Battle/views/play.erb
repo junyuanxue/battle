@@ -1,6 +1,6 @@
-<html style="text-align:center; font-family: monaco;"><%=@player_1%> and <%=@player_2%> are ready to jam!</html>
+<html style="text-align:center; font-family: monaco;"><%=@game.player_1.name%> and <%=@game.player_2.name%> are ready to jam!</html>
 <p style="text-align:center; font-family: monaco;">
-  <%=@player_2%> has <%=$player_2.tunage%>% tunage!
+  <%=@game.player_2.name%> has <%=@game.player_2.tunage%>% tunage!
 </p>
 
 <form action="/attack">

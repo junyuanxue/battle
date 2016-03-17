@@ -9,10 +9,6 @@ class Player
     @tunage = tunage
   end
 
-  def attack(player)
-    player.tunage_loss
-  end
-
   def tunage_loss
     @tunage -= TUNAGE_DAMAGE
   end
