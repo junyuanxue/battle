@@ -1,7 +1,7 @@
 require 'player'
 
 describe Player do
-  subject(:player) { described_class.new("Fluffy") }
+  subject(:player) { described_class.new("Misa") }
 
   describe "#name" do
     it "should return the player's name" do
@@ -17,9 +17,8 @@ describe Player do
 
   describe "#receive_attack" do
     it "should reduce player's HP upon attack" do
-      allow(player).to receive(:damage).and_return 2
-      player.receive_attack
-      expect(player.hp).to eq Player::MAX_HP - 2
+      player.receive_attack(Attack::BASIC_DAMAGE)
+      expect(player.hp).to eq Player::MAX_HP - Attack::BASIC_DAMAGE
     end
   end
 end

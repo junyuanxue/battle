@@ -1,18 +1,9 @@
 require 'sinatra/base'
 require_relative './lib/game'
 require_relative './lib/player'
+require_relative './lib/attack'
 
 class Battle < Sinatra::Base
-
-  enable :sessions
-
-  def self.store_game=(game)
-    @game = game
-  end
-
-  def self.game
-    @game
-  end
 
   get '/' do
     erb(:index)
@@ -21,7 +12,7 @@ class Battle < Sinatra::Base
   post '/names' do
     player1 = Player.new(params[:player1])
     player2 = Player.new(params[:player2])
-    self.class.store_game=Game.new(player1, player2)
+    Game.start(Game.new(player1, player2))
     redirect '/play'
   end
 
@@ -37,10 +28,17 @@ class Battle < Sinatra::Base
     erb(:play)
   end
 
+  post '/attack' do
+    type = "basic" if !!params[:basic_attack]
+    type = "random" if !!params[:random_attack]
+    Attack.run(game.current_opponent, type)
+    redirect '/attacked'
+  end
+
   get '/attacked' do
-    game.attack(game.opponent)
-    @damaged_player = game.current_player.name
-    @damaged_player_hp = game.current_player.hp
+    @damaged_player = game.current_opponent.name
+    @damaged_player_hp = game.current_opponent.hp
+    game.switch_player
     game.any_dead? ? redirect('/game_over') : erb(:attacked)
   end
 
@@ -51,7 +49,7 @@ class Battle < Sinatra::Base
 
   helpers do
     def game
-      self.class.game
+      Game.current
     end
   end
 

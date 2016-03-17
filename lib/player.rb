@@ -7,13 +7,7 @@ class Player
     @hp = MAX_HP
   end
 
-  def receive_attack
+  def receive_attack(damage)
     @hp -= damage
-  end
-
-  private
-
-  def damage
-    Kernel.rand(1..5)
   end
 end

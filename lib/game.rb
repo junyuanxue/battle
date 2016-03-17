@@ -1,8 +1,21 @@
 class Game
 
+  @game = nil
+
+  attr_reader :current_player
+
   def initialize(player1, player2)
     @players = [player1, player2]
-    @round_count = 1
+    @current_player = player1
+    @current_opponent = player2
+  end
+
+  def self.start(game)
+    @game = game
+  end
+
+  def self.current
+    @game
   end
 
   def store_self
@@ -17,20 +30,15 @@ class Game
     @players.last
   end
 
-  def attack(player)
-    player.receive_attack
-    @round_count += 1
+  def switch_player
+    @current_player = @players.select { |player| player != current_player }.pop
   end
 
-  def current_player
-    @round_count.odd? ? @players.first : @players.last
-  end
-
-  def opponent
-    @round_count.even? ? @players.first : @players.last
+  def current_opponent
+    @current_opponent = @players.select { |player| player != current_player }.pop
   end
 
   def any_dead?
-    player1.hp == 0 || player2.hp == 0
+    player1.hp <= 0 || player2.hp <= 0
   end
 end
