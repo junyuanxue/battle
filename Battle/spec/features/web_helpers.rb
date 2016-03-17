@@ -1,6 +1,6 @@
 def sign_in_and_play
   visit '/'
-  fill_in :player_1, with: 'Miles'
-  fill_in :player_2, with: 'Thelonious'
+  fill_in :player_1, with: 'Slash'
+  fill_in :player_2, with: 'Santana'
   click_button 'Create Musicians'
 end
