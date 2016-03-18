@@ -23,4 +23,8 @@ class Game
   def opponent
     @current_player == @player_1 ? @player_2 : @player_1
   end
+
+  def over?
+    player_1.tunage <= 0 || player_2.tunage <= 0
+  end
 end
