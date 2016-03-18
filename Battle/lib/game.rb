@@ -1,19 +1,26 @@
 class Game
 
+  attr_reader :player_1, :player_2
+
   def initialize(player_1, player_2)
-    @players = [player_1, player_2]
+    @player_1 = player_1
+    @player_2 = player_2
+    @current_player = player_1
+  end
+
+  def swap_turn
+    if @current_player == @player_1
+      @current_player = @player_2
+    else
+      @current_player = @player_1
+    end
   end
 
   def attack(player)
     player.tunage_loss
   end
 
-  def player_1
-    @players.first
+  def opponent
+    @current_player == @player_1 ? @player_2 : @player_1
   end
-
-  def player_2
-    @players.last
-  end
-
 end

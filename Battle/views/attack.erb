@@ -1,5 +1,10 @@
-<html style="text-align:center; font-family: monaco;"><%=@game.player_2.name%> has lost 10% tunage!</html>
-
-<p style="text-align:center; font-family: monaco; font-size: 75%">
-<a href="/play">Sweet! Back to jamming!</a>
-</p>
+<html>
+  <body style="text-align:center; font-family: monaco; background-color: lightgrey;">
+    <%=@game.opponent.name%> has lost 10% tunage!
+    <p style="text-align:center; font-family: monaco; font-size: 75%">
+      <form action="/swap-turn" method="post">
+        <input type="submit" value="Sweet! Back to jamming!">
+      </form>
+    </p>
+  </body>
+</html>
