@@ -2,32 +2,42 @@
   <h1><%= @player1_name %> vs. <%= @player2_name %></h1>
 
   <div class="container">
-    <div id="player1_hp">
-      <h3><%= @player1_name %> HP: <%= @p1_hp %>/<%= Player::MAX_HP %></h3>
-    </div>
-    <img class="attack_pic" src="http://www.zooborns.com/.a/6a010535647bf3970b0120a895c8ea970b-800wi"/>
-    <div id="player2_hp">
-      <h3><%= @player2_name %> HP: <%= @p2_hp %>/<%= Player::MAX_HP %></h3>
-    </div>
 
-    <div id="player_turn">
-      <div>
-        <% if @current_player == @player1_name %>
-          <img src="http://orig02.deviantart.net/634f/f/2012/237/6/c/baby_fluffy_kitten_by_pikachuballoon-d5cdjsn.jpg" height="96" width="140">
-        <% else %>
-          <img src="http://media.mydogspace.com.s3.amazonaws.com/wp-content/uploads/2013/08/puppy-500x350.jpg" height="96" width="150">
-        <% end %>
+    <% if @current_player.downcase == "computer" %>
+      <img src="http://images.mmosite.com/news/2008/02/14/2008021221163755_s.jpg" />
+      <div id="computer_attack">Computer just attacked you!</div>
+      <form action="/attack" method="post" id="view_damage">
+        <button type="submit" name="random_attack">View damage</button>
+      </form>
+
+    <% else %>
+      <div id="player1_hp">
+        <h3><%= @player1_name %> HP: <%= @p1_hp %>/<%= Player::MAX_HP %></h3>
       </div>
-      <%= @current_player %>'s turn
-    </div>
+      <img class="attack_pic" src="http://www.zooborns.com/.a/6a010535647bf3970b0120a895c8ea970b-800wi"/>
+      <div id="player2_hp">
+        <h3><%= @player2_name %> HP: <%= @p2_hp %>/<%= Player::MAX_HP %></h3>
+      </div>
 
-    <form action="/attack" method="post">
-      <button type="submit" name="basic_attack">Basic Attack</button>
-    </form>
+      <div id="player_turn">
+        <div>
+          <% if @current_player == @player1_name %>
+            <img src="http://orig02.deviantart.net/634f/f/2012/237/6/c/baby_fluffy_kitten_by_pikachuballoon-d5cdjsn.jpg" height="96" width="140">
+          <% else %>
+            <img src="http://media.mydogspace.com.s3.amazonaws.com/wp-content/uploads/2013/08/puppy-500x350.jpg" height="96" width="150">
+          <% end %>
+        </div>
+        <%= @current_player %>'s turn
+      </div>
 
-    <form action="/attack" method="post">
-      <button type="submit" name="random_attack">Random Attack</button>
-    </form>
+      <form action="/attack" method="post">
+        <button type="submit" name="basic_attack">Basic Attack</button>
+      </form>
+
+      <form action="/attack" method="post">
+        <button type="submit" name="random_attack">Random Attack</button>
+      </form>
+    <% end %>
   </div>
 
 </div>

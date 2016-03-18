@@ -88,3 +88,15 @@ button[name="random_attack"] {
     text-align: center;
     padding: 35px 0 0 0;
 }
+
+/*computer attack*/
+
+#view_damage {
+  float: left;
+  left: 50px;
+  padding: 0 0 0 440px;
+}
+
+#computer_attack {
+  padding: 25px 0 25px 0;
+}
