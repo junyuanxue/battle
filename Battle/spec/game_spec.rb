@@ -19,4 +19,12 @@ describe Game do
       expect(game.attack(player_2))
     end
   end
+
+  describe '#swap_turn' do
+    it 'swaps to player 2 after first attack' do
+      allow(player_2).to receive(:tunage_loss)
+      game.attack(player_2)
+      expect(game.swap_turn).to eq player_2
+    end
+  end
 end

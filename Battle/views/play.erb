@@ -3,7 +3,7 @@
   <%=@game.player_1.name%> has <%=@game.player_1.tunage%>% tunage!
   <%=@game.player_2.name%> has <%=@game.player_2.tunage%>% tunage!
 </p>
-
+<p><%=@game.current_player.name%>'s turn to jam!</p>
 <form action="/attack">
   <input type="submit" value="Strum Vigorously!">
 </form>
